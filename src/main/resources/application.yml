@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://47.100.17.213/moocmall?characterEncoding=utf-8&useSSL=false
+  jpa:
+    show-sql: true
+  jackson:
+    default-property-inclusion: non_null
+#server:
+#  context-path: /sell
+wechat:
+#  mpAppId: wxd898fcb01713c658
+  mpAppId: wxd898fcb01713c658
+  mpAppSecret: 29d8a650db31472aa87800e3b0d739f2
+  mchId: 1483469312
+  mchKey: C5245D70627C1F8E9964D494B0735025
+  keyPath:
+  notifyUrl: http://sell.natapp4.cc/sell/pay/notifyUrl
