@@ -6,6 +6,8 @@ import com.study.mall.enums.ResultEnum;
 import com.study.mall.exception.Sellexception;
 import com.study.mall.service.ProductCategoryService;
 import com.study.mall.service.ProductInfoService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,6 +23,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/sell/product")
+@Api(value = "卖家商品模块",description = "卖家商品部分的功能模块")
 public class SellProductController {
     @Autowired
     private ProductInfoService productInfoService;
@@ -28,6 +31,7 @@ public class SellProductController {
     private ProductCategoryService categoryService;
 
     @GetMapping("/list")
+    @ApiOperation(value = "查询商品列表",notes = "获取商品的列表")
     public ModelAndView findAll(@RequestParam(value = "page",defaultValue = "1") Integer page, @RequestParam(value = "size",defaultValue = "3")Integer size, Map<String,Object> map){
         PageRequest pageRequest=new PageRequest(page-1,size);
 
@@ -40,6 +44,7 @@ public class SellProductController {
 
     }
     @GetMapping("/update")
+    @ApiOperation(value = "更新商品信息",notes = "更新商品的信息")
     public ModelAndView detail(@RequestParam("productId") String productId, Map<String,Object> map){
         ProductInfo productInfo;
         try {
@@ -53,6 +58,7 @@ public class SellProductController {
         return new ModelAndView("product/detail",map);
     }
     @GetMapping("/onSale")
+    @ApiOperation(value = "商品上架",notes = "上架商品")
     public ModelAndView onSale(@RequestParam("productId") String productId, Map<String,Object> map){
         ProductInfo productInfo;
         try {
@@ -69,6 +75,7 @@ public class SellProductController {
     }
 
     @GetMapping("/offSale")
+    @ApiOperation(value = "商品下架",notes = "下架上商品")
     public ModelAndView offSale(@RequestParam("productId") String productId, Map<String,Object> map){
         ProductInfo productInfo;
         try {
